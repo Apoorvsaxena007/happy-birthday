@@ -3,7 +3,13 @@ const animationTimeline = () => {
   // Spit chars that needs to be animated individually
   const textBoxChars = document.getElementsByClassName("hbd-chatbox")[0];
   const hbd = document.getElementsByClassName("wish-hbd")[0];
-
+  var isChrome = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
+  if (!isChrome){
+      $('#iframeAudio').remove()
+  }
+  else {
+      $('#playAudio').remove() // just to make sure that it will not have 2x audio in the background 
+  }
   textBoxChars.innerHTML = `<span>${textBoxChars.innerHTML
     .split("")
     .join("</span><span>")}</span`;
